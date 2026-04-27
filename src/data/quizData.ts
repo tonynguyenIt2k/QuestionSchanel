@@ -528,7 +528,7 @@ export const quizData: Question[] = [
     "text": "Phụ kiện loại 2 (Tai nghe, loa trên 1 triệu) bảo hành như thế nào?",
     "options": [
       "Hoàn tiền ngay tại shop",
-      "Gửi bảo hành 5-7 ngày",
+      "1 đổi 1 15 ngày đầu, Bảo hành 12 tháng sửa chữa",
       "Đổi ngay lập tức tại shop",
       "Sửa chữa 2-4 tuần theo quy định hãng"
     ],
@@ -698,7 +698,7 @@ export const quizData: Question[] = [
       "Sửa chữa 2-4 tuần theo quy định hãng",
       "Đổi ngay lập tức tại shop",
       "Hoàn tiền ngay tại shop",
-      "Gửi bảo hành 5-7 ngày"
+      "1 đổi 1 15 ngày đầu, Bảo hành 12 tháng sửa chữa"
     ],
     "correctAnswer": 3
   },
