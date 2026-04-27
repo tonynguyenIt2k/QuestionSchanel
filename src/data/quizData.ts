@@ -503,7 +503,7 @@ export const quizData: Question[] = [
     "category": "Lý Thuyết Bảo Hành",
     "text": "Phụ kiện loại 1 (Tai nghe, loa < 1 triệu) sẽ bảo hành như thế nào?",
     "options": [
-      "Đổi tại shop (Bảo hành sửa chữa 6 tháng cho đồ đổi)",
+      "Đổi tại shop (BH đổi mới 6 -12 tháng tùy loại)",
       "Gửi về hãng 2-4 tuần",
       "Sửa chữa mất 5-7 ngày",
       "Không bảo hành"
@@ -518,7 +518,7 @@ export const quizData: Question[] = [
       "Không bảo hành nữa",
       "Bảo hành 1 đổi 1 6 tháng",
       "Bảo hành sửa chữa 1 tháng",
-      "Bảo hành sửa chữa 6 tháng"
+      "Bảo hành đổi mới 6 -12 tháng tùy loại"
     ],
     "correctAnswer": 3
   },
@@ -669,7 +669,7 @@ export const quizData: Question[] = [
   {
     "id": "q_56",
     "category": "Lý Thuyết Bảo Hành",
-    "text": "(Kiểm tra quy định 26) Phụ kiện loại 1 (Tai nghe, loa < 1 triệu) sẽ bảo hành như thế nào?",
+    "text": "(Kiểm tra quy định 26) Phụ kiện  (Tai nghe, loa < 1 triệu) sẽ bảo hành như thế nào?",
     "options": [
       "Đổi tại shop (Bảo hành sửa chữa 6 tháng cho đồ đổi)",
       "Sửa chữa mất 5-7 ngày",
@@ -684,9 +684,9 @@ export const quizData: Question[] = [
     "text": "(Kiểm tra quy định 27) Trong bộ phụ kiện loại 1, quy định tiếp theo cho máy đổi đó là gì?",
     "options": [
       "Bảo hành sửa chữa 1 tháng",
-      "Bảo hành sửa chữa 6 tháng",
+      "Bảo hành đổi mới 6 -12 tháng tùy loại",
       "Không bảo hành nữa",
-      "Bảo hành 1 đổi 1 6 tháng"
+      "Bảo hành đổi mới 6 -12 tháng tùy loại"
     ],
     "correctAnswer": 1
   },
