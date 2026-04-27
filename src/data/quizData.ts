@@ -686,7 +686,7 @@ export const quizData: Question[] = [
       "Bảo hành sửa chữa 1 tháng",
       "Bảo hành đổi mới 6 -12 tháng tùy loại",
       "Không bảo hành nữa",
-      "Bảo hành đổi mới 6 -12 tháng tùy loại"
+      "Bảo hành sửa chữa 1 tháng"
     ],
     "correctAnswer": 1
   },
