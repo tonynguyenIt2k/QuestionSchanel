@@ -17,9 +17,11 @@ import {
   Trophy,
   AlertCircle,
   LayoutGrid,
-  ArrowLeft
+  ArrowLeft,
+  Lightbulb
 } from 'lucide-react';
 import { quizData } from './data/quizData';
+import { getExplanation } from './data/explanations';
 import { Question } from './types';
 
 type Step = 'start' | 'category' | 'quiz' | 'result';
@@ -301,6 +303,44 @@ export default function App() {
                       })}
                     </div>
                   </div>
+
+                  {/* Explanation Box */}
+                  <AnimatePresence>
+                    {showFeedback && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className={`rounded-xl md:rounded-2xl p-4 md:p-6 border-2 ${
+                          lastAnswerCorrect
+                            ? 'bg-green-50 border-green-200'
+                            : 'bg-amber-50 border-amber-200'
+                        }`}
+                      >
+                        <div className="flex items-start gap-3">
+                          <div className={`p-2 rounded-xl shrink-0 ${
+                            lastAnswerCorrect ? 'bg-green-100' : 'bg-amber-100'
+                          }`}>
+                            <Lightbulb className={`w-5 h-5 ${
+                              lastAnswerCorrect ? 'text-green-600' : 'text-amber-600'
+                            }`} />
+                          </div>
+                          <div>
+                            <h4 className={`text-sm font-black uppercase tracking-wider mb-1 ${
+                              lastAnswerCorrect ? 'text-green-700' : 'text-amber-700'
+                            }`}>
+                              {lastAnswerCorrect ? '✓ Chính xác!' : '✗ Chưa đúng!'}
+                            </h4>
+                            <p className={`text-sm md:text-base leading-relaxed font-medium ${
+                              lastAnswerCorrect ? 'text-green-800' : 'text-amber-800'
+                            }`}>
+                              {getExplanation(currentQuestion.id)}
+                            </p>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
 
                   <div className="flex flex-col sm:flex-row justify-between items-center gap-4 py-2">
                     <div className="flex space-x-1 sm:space-x-1.5 order-2 sm:order-1">
