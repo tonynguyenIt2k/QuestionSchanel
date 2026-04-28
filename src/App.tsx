@@ -304,44 +304,6 @@ export default function App() {
                     </div>
                   </div>
 
-                  {/* Explanation Box */}
-                  <AnimatePresence>
-                    {showFeedback && (
-                      <motion.div
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className={`rounded-xl md:rounded-2xl p-4 md:p-6 border-2 ${
-                          lastAnswerCorrect
-                            ? 'bg-green-50 border-green-200'
-                            : 'bg-amber-50 border-amber-200'
-                        }`}
-                      >
-                        <div className="flex items-start gap-3">
-                          <div className={`p-2 rounded-xl shrink-0 ${
-                            lastAnswerCorrect ? 'bg-green-100' : 'bg-amber-100'
-                          }`}>
-                            <Lightbulb className={`w-5 h-5 ${
-                              lastAnswerCorrect ? 'text-green-600' : 'text-amber-600'
-                            }`} />
-                          </div>
-                          <div>
-                            <h4 className={`text-sm font-black uppercase tracking-wider mb-1 ${
-                              lastAnswerCorrect ? 'text-green-700' : 'text-amber-700'
-                            }`}>
-                              {lastAnswerCorrect ? '✓ Chính xác!' : '✗ Chưa đúng!'}
-                            </h4>
-                            <p className={`text-sm md:text-base leading-relaxed font-medium ${
-                              lastAnswerCorrect ? 'text-green-800' : 'text-amber-800'
-                            }`}>
-                              {getExplanation(currentQuestion.id)}
-                            </p>
-                          </div>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-
                   <div className="flex flex-col sm:flex-row justify-between items-center gap-4 py-2">
                     <div className="flex space-x-1 sm:space-x-1.5 order-2 sm:order-1">
                       {activeQuestions.slice(0, Math.min(activeQuestions.length, 15)).map((_, i) => (
@@ -417,22 +379,61 @@ export default function App() {
                     </div>
                   </div>
 
-                  <div className="glass rounded-3xl p-6 shadow-sm bg-indigo-900 text-white relative overflow-hidden group hidden lg:block">
-                     <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:scale-110 transition-transform">
-                        <AlertCircle className="w-20 h-20" />
-                     </div>
-                     <h3 className="text-[10px] font-black text-indigo-300 uppercase tracking-widest mb-4">Ghi chú quan trọng</h3>
-                     <div className="space-y-4">
-                        <div className="p-3 bg-white/10 rounded-xl">
-                          <p className="text-[10px] font-bold text-indigo-200 uppercase mb-1">Thu cũ:</p>
-                          <p className="text-[10px] leading-relaxed">Pin &lt; 85% hỗ trợ 30% giá thay pin rẻ nhất. Android trừ 200k sạc nguồn.</p>
+                  <AnimatePresence mode="wait">
+                    {showFeedback ? (
+                      <motion.div
+                        key="explanation"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.3 }}
+                        className={`glass rounded-3xl p-6 shadow-sm relative overflow-hidden ${
+                          lastAnswerCorrect
+                            ? 'bg-green-900 text-white'
+                            : 'bg-amber-900 text-white'
+                        }`}
+                      >
+                        <div className={`absolute top-0 right-0 p-4 opacity-10`}>
+                          <Lightbulb className="w-20 h-20" />
                         </div>
+                        <h3 className={`text-[10px] font-black uppercase tracking-widest mb-4 ${
+                          lastAnswerCorrect ? 'text-green-300' : 'text-amber-300'
+                        }`}>
+                          {lastAnswerCorrect ? '✓ Chính xác!' : '✗ Chưa đúng!'}
+                        </h3>
                         <div className="p-3 bg-white/10 rounded-xl">
-                          <p className="text-[10px] font-bold text-indigo-200 uppercase mb-1">Apple:</p>
-                          <p className="text-[10px] leading-relaxed">Thoát iCloud + Xin Email + In biên nhận A4 (Đầy đủ chữ ký/dấu).</p>
+                          <p className="text-[10px] font-bold uppercase mb-2 opacity-70">Giải thích:</p>
+                          <p className="text-xs md:text-sm leading-relaxed font-medium">
+                            {getExplanation(currentQuestion.id)}
+                          </p>
                         </div>
-                     </div>
-                  </div>
+                      </motion.div>
+                    ) : (
+                      <motion.div
+                        key="notes"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.3 }}
+                        className="glass rounded-3xl p-6 shadow-sm bg-indigo-900 text-white relative overflow-hidden group hidden lg:block"
+                      >
+                        <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:scale-110 transition-transform">
+                          <AlertCircle className="w-20 h-20" />
+                        </div>
+                        <h3 className="text-[10px] font-black text-indigo-300 uppercase tracking-widest mb-4">Ghi chú quan trọng</h3>
+                        <div className="space-y-4">
+                          <div className="p-3 bg-white/10 rounded-xl">
+                            <p className="text-[10px] font-bold text-indigo-200 uppercase mb-1">Thu cũ:</p>
+                            <p className="text-[10px] leading-relaxed">Pin &lt; 85% hỗ trợ 30% giá thay pin rẻ nhất. Android trừ 200k sạc nguồn.</p>
+                          </div>
+                          <div className="p-3 bg-white/10 rounded-xl">
+                            <p className="text-[10px] font-bold text-indigo-200 uppercase mb-1">Apple:</p>
+                            <p className="text-[10px] leading-relaxed">Thoát iCloud + Xin Email + In biên nhận A4 (Đầy đủ chữ ký/dấu).</p>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </aside>
               </motion.div>
             )}
